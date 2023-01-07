@@ -8,14 +8,16 @@ Plug 'vim-scripts/c.vim'
 Plug 'fatih/vim-go'
 Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
 Plug 'stephpy/vim-php-cs-fixer'
-Plug 'neoclide/coc.nvim', {'tag': 'v0.0.82'} ":CocInstall coc-tabnine
+Plug 'neoclide/coc.nvim', {'tag': 'v0.0.82'}
 call plug#end()
 
 "augroup FileTypeSpecificAutocommands
 "    autocmd FileType php setlocal tabstop=2 softtabstop=2 shiftwidth=2
 "augroup END
 
-
+"coc.vim confirm by enter(CR = carriage return )
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 
 " If you use php-cs-fixer version 2.x
